@@ -6,7 +6,20 @@ public partial class GameObject
 	internal NetworkObject Net { get; private set; }
 
 	public bool IsNetworkOwner => Net?.IsOwner ?? false;
-	public bool IsProxy => Net?.IsProxy ?? false;
+
+	public bool IsProxy
+	{
+		get
+		{
+			if ( Net is not null )
+			{
+				return Net.IsProxy;
+			}
+
+			return Parent?.IsProxy ?? false;
+		}
+	}
+
 	public bool IsNetworked => Net is not null;
 
 	public float LastTx { get; set; }
@@ -124,8 +137,10 @@ public partial class GameObject
 
 	internal void Receive( ObjectUpdateMsg update )
 	{
+		float netRate = Scene.NetworkRate;
 		LastRcv = RealTime.Now;
-		Transform.LerpTo( update.Transform, (1.0f / 30.0f) );
+
+		Transform.FromNetwork( update.Transform, netRate );
 
 		if ( string.IsNullOrWhiteSpace( update.Data ) )
 			return;
