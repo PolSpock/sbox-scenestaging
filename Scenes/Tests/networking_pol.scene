@@ -1,0 +1,176 @@
+{
+  "GameObjects": [
+    {
+      "Id": "0ba58435-cd4f-4138-8196-23c2c5d907ee",
+      "Name": "NetworkingGame",
+      "Networked": true,
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "NetworkSession",
+          "__enabled": true
+        }
+      ]
+    },
+    {
+      "Id": "46c78aca-a912-4621-b961-9e327a54e0a8",
+      "Name": "Main Camera",
+      "Position": "-300,0,100",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "CameraComponent",
+          "__enabled": true,
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "TargetEye": "None",
+          "ZFar": 10000,
+          "ZNear": 10
+        }
+      ]
+    },
+    {
+      "Id": "62bf98e7-c30d-4e4c-992b-8c7e7df936b1",
+      "Name": "Directional Light",
+      "Position": "0,0,200",
+      "Rotation": "-0.2459843,0.5938584,0.2931525,0.7077326",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLightComponent",
+          "__enabled": true,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "Id": "e17e0963-8c40-4abe-9d2e-1f2307ce57b2",
+      "Name": "NetworkedPawn",
+      "Networked": true,
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "PawnNetwork",
+          "__enabled": true,
+          "ObjectToSpawn": "ac450b34-ed22-41dd-a3d9-cfd61028d873"
+        }
+      ]
+    },
+    {
+      "Id": "ac450b34-ed22-41dd-a3d9-cfd61028d873",
+      "Name": "Player",
+      "Components": [
+        {
+          "__type": "CharacterController",
+          "__enabled": true,
+          "Acceleration": 10,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "",
+          "Radius": 16,
+          "StepHeight": 18
+        },
+        {
+          "__type": "PlayerControllerFPS",
+          "__enabled": true,
+          "Body": "f784b6b6-2599-41e3-b5d3-e0b2981e9f73",
+          "Eye": "f5f7b405-0235-4779-ac83-9f4651324f56",
+          "Gravity": "0,0,800"
+        },
+        {
+          "__type": "CitizenAnimation",
+          "__enabled": true,
+          "Height": 1,
+          "Target": "f784b6b6-2599-41e3-b5d3-e0b2981e9f73"
+        }
+      ],
+      "Children": [
+        {
+          "Id": "f5f7b405-0235-4779-ac83-9f4651324f56",
+          "Name": "EyePos",
+          "Position": "0,0,64",
+          "Enabled": true
+        },
+        {
+          "Id": "f784b6b6-2599-41e3-b5d3-e0b2981e9f73",
+          "Name": "Body",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "AnimatedModelComponent",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "CreateBoneObjects": false,
+              "MaterialGroup": null,
+              "MaterialOverride": null,
+              "Model": "models/playermodel/characters/female01/female01.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "e7f2a845-2d01-4491-bd40-f611a4c5c704",
+      "Name": "World",
+      "Enabled": true,
+      "Children": [
+        {
+          "Id": "7bbe9d87-c1ba-45d0-8ad2-5417070c9be3",
+          "Name": "Surface",
+          "Scale": "20,20,20",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelComponent",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/shine.vmat",
+              "Model": "models/dev/plane.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "0.05882,0.13725,0.49412,1"
+            },
+            {
+              "__type": "ColliderBoxComponent",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Scale": "100,100,0.01",
+              "Static": false,
+              "Surface": "surfaces/concrete.surface"
+            }
+          ],
+          "Children": [
+            {
+              "Id": "d96e9e03-52e0-43c1-9e80-48e865a075bf",
+              "Name": "SpawnPoint",
+              "Position": "24.59029,-4.536294,0",
+              "Enabled": true,
+              "Components": [
+                {
+                  "__type": "SimpleSpawnPoint",
+                  "__enabled": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "TimeScale": 1,
+    "ThreadedAnimation": true,
+    "UseFixedUpdate": true
+  },
+  "Title": "networking_pol",
+  "Description": "",
+  "__references": []
+}
